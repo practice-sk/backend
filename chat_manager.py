@@ -611,21 +611,6 @@ def health():
 # ============================================
 
 if __name__ == "__main__":
-    print("\n" + "="*60)
-    print("💬 Local Chat Manager Starting (With Authentication)...")
-    print("="*60)
-    print(f"📍 Running on: http://localhost:5002")
-    print(f"🤖 LLM Server: {LLM_SERVER_URL if LLM_SERVER_URL else 'Not configured'}")
-    print(f"💾 Data Directory: {DATA_DIR}")
-    print(f"📄 Sessions File: {DATA_FILE}")
-    print(f"👥 Users File: {USERS_FILE}")
-    print(f"📊 Sessions Loaded: {len(chat_sessions)}")
-    print(f"👥 Users Registered: {len(load_users())}")
-    print(f"🔢 Turn Limit: {TURN_LIMIT}")
-    print(f"🔐 Authentication: Enabled")
-    print(f"🔑 System Passkey: {PASSKEY}")
-    print("="*60 + "\n")
-    
-    # Run server
-    app.run(host='0.0.0.0', port=5002, debug=True, use_reloader=False)
+    port = int(os.environ.get("PORT", 5002))
+    app.run(host="0.0.0.0", port=port)
 
